@@ -1333,7 +1333,7 @@ p.cont-wthree-para a {
     padding-right: 1em;
 }
 
-.footer_wthree_gridf_list li a {
+.footer_wthree_gridf_list li a, .footer_wthree_gridf_list li p {
     color: #555;
     text-decoration: none;
     text-transform: uppercase;
@@ -1561,6 +1561,11 @@ h3.sub-w3ls-headf {
         font-size: 1em;
         margin: 2em 0 1em 0;
     }
+
+    .prodSize{
+        width: 130px;
+        height: 150px;
+    }
 }
 
 @media(max-width:1080px) {
@@ -1613,6 +1618,11 @@ h3.sub-w3ls-headf {
         display: flex;
         justify-content: center;
     }
+
+    .prodSize{
+        width: 170px;
+        height: 110px;
+    }
 }
 
 @media(max-width:900px) {
@@ -1636,6 +1646,7 @@ h3.sub-w3ls-headf {
     .item-info-product h4 a {
         font-size: 12px;
     }
+
 }
 
 @media(max-width:768px) {}

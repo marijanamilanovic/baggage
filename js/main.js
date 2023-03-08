@@ -291,6 +291,7 @@ if(url.indexOf("shop.html") != -1){
     }
 
     function productsPrint(product){
+        localStorage.setItem("products", JSON.stringify(data));
         product = sortProducts(product);
         product = filterByBrand(product);
         product = filterBySearch(product);
@@ -318,7 +319,7 @@ if(url.indexOf("shop.html") != -1){
                             </div>
                         </div>
                         <p>${brandProcess(p.brand)}</p>
-                        <input type="button" class="btn btn-dark add-to-cart" value="ADD TO CART"/>
+                        <input type="button" class="btn btn-dark add-to-cart" value="ADD TO CART" onclick="cart(${p.id})"/>
                         <p id="addedToTheCart" class="d-none">Added to the cart!</p>
                     </div>
                 </div>
@@ -349,5 +350,80 @@ if(url.indexOf("shop.html") != -1){
         for(let brand of brands) {
             if(brandId == brand.id) return brand.name;
         } 
+    }
+
+    function createSidebar(array, type){
+        let html = `<div class="sidebar">
+                        <div class="row justify-content-center text-center p-3">
+                            <p class="h2 col-10">Your ${type}</p>
+                            <div onclick="closeSidebar()" class="col-2"><i class="fas fa-times"></i></div>
+                        </div>
+                        <div class="p-3 w-100 row justify-content-center" id="sidebar-content">`;
+        let pl = getLocalStorageItem("products");
+        if(array && array.length > 0){
+            for(let p of pl){
+                for(i of array){
+                    if(type == "cart" ? p.id==i.id : p.id==i){
+                        html +=`<div class="w col-8 col-md-4 m-3 p-3 w-bg">
+                                    <img src="img/${p.photo.src}" alt="${p.photo.alt}"/>
+                                    <div class="p-3">
+                                        <h5>${p.name}</h5>
+                                        <p class="price h2">${p.price.current}$ <mark>${p.price.before ? p.price.before + "$" : ""}</mark></p>
+                                        <p class="free">Quantitiy: ${i.value ? i.value : ""}</p>
+                                        <p class="free h" onclick="rem${type == "cart"?"c":"w"}(${p.id})">Remove ${type == "cart"?"":"<i class='fas fa-heart-broken'></i>"}</p>
+                                    </div>
+                                </div>`
+                    }
+                }
+            }
+            // if(type == "cart"){
+            //     html+= `<div  class="row justify-content-center">
+            //                 <input type="button" onclick="orderForm()" value="Order" class="button rounded p-2 m-md-3 m-2 col-5 col-md-3"/>
+            //                 <input type="button" onclick="del('cart')" value="Clear" class="button rounded p-2 m-md-3 m-2 col-5 col-md-3"/>
+            //                 <p><span class="h3">Total price: ${total()} $ </span>(With shipping per product)</p>
+            //             </div>`
+            // }
+            // else {
+            //     html+= `<div class="row justify-content-center">
+            //                 <input type="button" onclick="del('WishList')" value="Clear" class="button rounded p-2 m-md-3 m-2 w-50"/>
+            //             </div>`
+            // }
+        }
+        else {
+            html += `<p class="mt-5">Your ${type} is empty!<br/>Visit our <a href="shop.html">shop</a> to add new items.</p>`;
+        }
+        html += "</div></div>"
+        $("main").append(html);
+    }
+
+    function closeSidebar(){
+        document.querySelector(".sidebar").remove();
+    }
+
+    function cart(id){
+        $('#addedToTheCart').fadeIn(500, function(){
+            setTimeout(()=>{$('#addedToTheCart').fadeOut(500)},2000);
+        });
+        var ids = getLocalStorageItem("cart");
+        if(!ids){
+            ids=[];
+            ids[0] = {"id":id,
+                        "value":1}
+            localStorage.setItem("cart", JSON.stringify(ids));
+        }
+        else{
+            var n = 0;
+            for(let i of ids){
+                if(i.id==id){
+                    i.value++;
+                    n++;
+                }
+            }
+            if(n==0){
+                ids[ids.length] = {"id":id,
+                                    "value":1}
+            }
+            localStorage.setItem("cart", JSON.stringify(ids));
+        }
     }
 }

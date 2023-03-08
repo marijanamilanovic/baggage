@@ -398,7 +398,7 @@ if(url.indexOf("shop.html") != -1){
             html += `<p class="mt-5">Your ${type} is empty!<br/>Visit our <a href="shop.html">shop</a> to add new items.</p>`;
         }
         html += "</div></div>"
-        $("main").append(html);
+        $('#main').append(html);
     }
 
     function closeSidebar(){

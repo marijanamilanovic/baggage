@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "path": "facebook.com",
+        "icon": "fa fa-facebook"
+    },
+    {
+        "id": 2,
+        "path": "twitter.com",
+        "icon": "fa fa-twitter"
+    },
+    {
+        "id": 3,
+        "path": "google.com",
+        "icon": "fa fa-google"
+    },
+    {
+        "id": 4,
+        "path": "sitemap.xml",
+        "icon": "fa fa-sitemap"
+    },
+    {
+        "id": 5,
+        "path": "documentation.pdf",
+        "icon": "fa fa-file"
+    }
+]

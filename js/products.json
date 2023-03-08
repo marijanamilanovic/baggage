@@ -1,0 +1,158 @@
+[
+    {
+        "id": 1,
+        "name": "Prada Sidney Saddle Shoulder Bag",
+        "price": {
+            "before": null,
+            "current": 1900
+        },
+        "photo": {
+            "src": "bag1.jpg",
+            "alt": "Prada bag"
+        },
+        "brand": 1
+    },
+    {
+        "id": 2,
+        "name": "Prada Re-Nylon Mini Shoulder Bag",
+        "price": {
+            "before": 2400,
+            "current": 1700
+        },
+        "photo": {
+            "src": "bag39.jpg",
+            "alt": "Prada bag"
+        },
+        "brand": 1
+    },
+    {
+        "id": 3,
+        "name": "YSL LE 5 A 7 in smooth bag",
+        "price": {
+            "before": 2200,
+            "current": 1550 
+        },
+        "photo": {
+            "src": "bag3.jpg",
+            "alt": "YSL bag"
+        },
+        "brand": 2
+    },
+    {
+        "id": 4,
+        "name": "Jacquemus Le Chiquito Bag",
+        "price": {
+            "before": 700,
+            "current": 615  
+        },
+        "photo": {
+            "src": "bag5.jpg",
+            "alt": "Jacquemus bag"
+        },
+        "brand": 3
+    },
+    {
+        "id": 5,
+        "name": "Valentino Loco Calfskin Bag",
+        "price": {
+            "before": null,
+            "current": 2700
+        },
+        "photo": {
+            "src": "bag9.jpg",
+            "alt": "Valentino bag"
+        },
+        "brand": 4
+    },
+    {
+        "id": 6,
+        "name": "Jacquemus Le Bambino Shoulder Bag",
+        "price": {
+            "before": null,
+            "current": 1600
+        },
+        "photo": {
+            "src": "bag25.jpg",
+            "alt": "Jacquemus bag"
+        },
+        "brand": 3
+    },
+    {
+        "id": 7,
+        "name": "Chanel Mini Kelly Flap Bag",
+        "price": {
+            "before": 2900,
+            "current": 2300
+        },
+        "photo": {
+            "src": "bag16.jpg",
+            "alt": "Chanel bag"
+        },
+        "brand": 5
+    },
+    {
+        "id": 8,
+        "name": "YSL Jamie Shoulder Bag Medium",
+        "price": {
+            "before": null,
+            "current": 1800
+        },
+        "photo": {
+            "src": "bag22.jpg",
+            "alt": "YSL bag"
+        },
+        "brand": 2
+    },
+    {
+        "id": 9,
+        "name": "Valentino Garavani Rockstud Spike Bag",
+        "price": {
+            "before": 3100,
+            "current": 2600
+        },
+        "photo": {
+            "src": "bag10.jpg",
+            "alt": "Valentino bag"
+        },
+        "brand": 4
+    },
+    {
+        "id": 10,
+        "name": "Chanel Mini Classic Flap Bag",
+        "price": {
+            "before": 2300,
+            "current": 1800
+        },
+        "photo": {
+            "src": "bag82.jpg",
+            "alt": "Chanel bag"
+        },
+        "brand": 5
+    },
+    {
+        "id": 11,
+        "name": "Valentino Locò Calfskin Shoulder Bag",
+        "price": {
+            "before": null,
+            "current": 2100
+        },
+        "photo": {
+            "src": "bag85.jpg",
+            "alt": "Valentino bag"
+        },
+        "brand": 4
+    },
+    {
+        "id": 12,
+        "name": "Chanel Medium Diana Shoulder Bag",
+        "price": {
+            "before": null,
+            "current": 3100
+        },
+        "photo": {
+            "src": "bag29.jpg",
+            "alt": "Chanel bag"
+        },
+        "brand": 5
+    }
+]

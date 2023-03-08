@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "name": "Home",
+        "path": "index.html"
+    },
+    {
+        "id": 2,
+        "name": "About",
+        "path": "about.html"
+    },
+    {
+        "id": 3,
+        "name": "Shop",
+        "path": "shop.html"
+    },
+    {
+        "id": 4,
+        "name": "Contact",
+        "path": "contact.html"
+    },
+    {
+        "id": 5,
+        "name": "Author",
+        "path": "author.html"
+    }
+]

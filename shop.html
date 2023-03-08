@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Baggage | Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Baggage, bags, brands, Chanel, Prada, Dior, Balenciaga, Valentino, Miu Miu"/>
+    <meta name="description" content="Baggage offers a large selection of luxury bags that are rarely found. Enjoy the exceptional offer of bags that we have selected for you."/>
+    <script>
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link href="css/font-awesome.css" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet"/>
+</head>
+<body>
+    <div class="main-sec inner-page">
+        <!-- //header -->
+        <header class="py-sm-3 pt-3 pb-2" id="home">
+            <div class="container">
+                <!-- nav -->
+                <div class="top-w3pvt d-flex">
+                    <div id="logo">
+                        <h1> <a href="index.html"><span class="log-w3pvt">B</span>aggage</a> <label class="sub-des">Online Store</label></h1>
+                    </div>
+                    <div class="forms ml-auto">
+                        <a href="#"><i class="fa fa-shopping-cart" id="cart"></i><span class="total-count"></span></a>
+                    </div> 
+                </div>
+                <div class="nav-top-wthree">
+                    <nav id="navPrint">
+                        <!-- <label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+                        <input type="checkbox" id="drop" />
+                        <ul class="menu">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li class="active"><a href="shop.html">Shop</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="author.html">Author</a></li>
+                        </ul> -->
+                    </nav>
+                    <!-- //nav -->
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!-- //banner-->
+    <!--/banner-bottom -->
+    <section class="banner-bottom py-5">
+        <h3 class="title-wthree mb-lg-5 mb-4 text-center">Shop Now</h3>
+        <div class="container py-5">
+            <!--/row-->
+            <div class="row shop-wthree-info text-center">
+                <div class="col-md-3">
+                    <form class="mt-4" id="sortFilter" name="sortFilter">
+                        <div id="searchDiv">
+                            <input type="search" id="searchProd" name="searchProd" placeholder="Search products"/>
+                        </div>
+                        <div id="sortDiv">
+                            <select id="sort" name="sort">
+                                <!-- <option value="0">Sort By</option>
+                                <option value="price-asc">Price ascending</option>
+                                <option value="price-desc">Price descending</option>
+                                <option value="name-asc">Name ascending</option>
+                                <option value="name-desc">Name descending</option> -->
+                            </select>
+                        </div>
+                        <div id="radioDiv">
+                            <input type="radio" id="all" name="prodRadio"/>
+                            <label for="allProd" id="allProd" name="allProd">All products</label><br/>
+                            <input type="radio" id="sale" name="prodRadio"/>
+                            <label for="saleProd" id="saleProd" name="saleProd">Products on sale</label>
+                        </div>
+                        <div id="brandDiv">
+                            <!-- <h5 class="mt-2 mb-1">BRANDS</h5> -->
+                            <!-- <input type="checkbox" name="chbPrada" id="chbPrada" class="brand"/>
+                            <label for="prada" id="prada" name="prada">Prada</label><br/>
+                            <input type="checkbox" name="chbYSL" id="chbYSL" class="brand"/>
+                            <label for="ysl" id="ysl" name="ysl">YSL</label><br/>
+                            <input type="checkbox" name="chbValentino" id="chbValentino" class="brand"/>
+                            <label for="valentino" id="valentino" name="valentino">Valentino</label><br/>
+                            <input type="checkbox" name="chbChanel" id="chbChanel" class="brand"/>
+                            <label for="chanel" id="chanel" name="chanel">Chanel</label><br/>
+                            <input type="checkbox" name="chbJacquemus" id="chbJacquemus" class="brand"/>
+                            <label for="jacquemus" id="jacquemus" name="jacquemus">Jacquemus</label><br/> -->
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-9">
+                    <div class="row" id="productPrint">
+                <!-- <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag1.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">Prada Sidney Saddle Shoulder Bag</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <div class="grid-price">
+                                    <h6>$1,900</h6>
+                                </div>
+                            </div>
+                            <p>PRADA</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag39.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">Prada Re-Nylon Mini Shoulder Bag</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <div class="grid-price">
+                                    <span class="money"><span class="line">$2,400</span> $1,700</span>
+                                </div>
+                            </div>
+                            <p>PRADA</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag3.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">YSL LE 5 A 7 in smooth bag</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <div class="grid-price">
+                                    <span class="money"><span class="line">$2,200</span> $1,550</span>
+                                </div>
+                            </div>
+                            <p>YSL</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag5.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">Jacquemus Le Chiquito Bag</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <div class="grid-price">
+                                    <span class="money"><span class="line">$700</span> $615</span>
+                                </div>
+                            </div>
+                            <p>JACQUEMUS</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag9.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">Valentino Loco Calfskin Bag</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <div class="grid-price">
+                                    <h6>$2,700</h6>
+                                </div>
+                            </div>
+                            <p>VALENTINO</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag25.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">Jacquemus Le Bambino Shoulder Bag</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <div class="grid-price">
+                                    <h6>$1,600</h6>
+                                </div>
+                            </div>
+                            <p>JACQUEMUS</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag16.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">Chanel Mini Kelly Flap Bag</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <div class="grid-price">
+                                    <span class="money"><span class="line">$2,900</span> $2,300</span>
+                                </div>
+                            </div>
+                            <p>CHANEL</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag22.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">YSL Jamie Shoulder Bag Medium</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <h6>$1,800</h6>
+                            </div>
+                            <p>YSL</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag10.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">Valentino Garavani Rockstud Spike Bag</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <div class="grid-price">
+                                    <span class="money"><span class="line">$3,100</span> $2,600</span>
+                                </div>
+                            </div>
+                            <p>VALENTINO</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag82.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">Chanel Mini Classic Flap Bag</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <div class="grid-price">
+                                    <span class="money"><span class="line">$2,300</span> $1,800</span>
+                                </div>
+                            </div>
+                            <p>CHANEL</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag85.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">Valentino Locò Calfskin Shoulder Bag</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <h6>$2,100</h6>
+                            </div>
+                            <p>VALENTINO</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 shop-info-grid text-center mt-4">
+                    <div class="product-shoe-info shoe">
+                        <div class="men-thumb-item">
+                            <img src="img/bag29.jpg" class="img-fluid prodSize" alt="bag"/>
+
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="single.html">Chanel Medium Diana Shoulder Bag</a>
+                            </h4>
+
+                            <div class="product_price">
+                                <h6>$3,100</h6>
+                            </div>
+                            <p>CHANEL</p>
+                            <input type="button" class="btn btn-dark" id="btnCart" name="btnCart" value="ADD TO CART"/>
+                        </div>
+                    </div>
+                </div> -->
+                </div>
+                </div>
+
+                <!--//row-->
+            </div>
+        </div>
+    </section>
+    <!-- footer -->
+    <div class="footer_agileinfo_topf py-5 footerBG">
+        <div class="container py-md-5">
+            <div class="row">
+                <div class="col-lg-3 footer_wthree_gridf mt-lg-5">
+                    <h2><a href="index.html"><span>B</span>aggage
+                        </a> </h2>
+                    <label class="sub-des2">Online Store</label>
+                </div>
+                <div class="col-lg-3 footer_wthree_gridf mt-md-0 mt-4">
+                    <ul class="footer_wthree_gridf_list">
+                        <li>
+                            <a href="index.html"><span class="fa fa-angle-right" aria-hidden="true"></span> Home</a>
+                        </li>
+                        <li>
+                            <a href="about.html"><span class="fa fa-angle-right" aria-hidden="true"></span> About</a>
+                        </li>
+                        <li>
+                            <a href="shop.html"><span class="fa fa-angle-right" aria-hidden="true"></span> Shop</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 footer_wthree_gridf mt-md-0 mt-sm-4 mt-3">
+                    <ul class="footer_wthree_gridf_list">
+                        <li>
+                            <a href="contact.html"><span class="fa fa-angle-right" aria-hidden="true"></span> Contact</a>
+                        </li>
+                        <li>
+                            <a href="author.html"><span class="fa fa-angle-right" aria-hidden="true"></span> Author</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 footer_wthree_gridf mt-md-0 mt-sm-4 mt-3">
+                    <ul class="footer_wthree_gridf_list">
+                        <li>
+                            <p><span class="fa fa-angle-right" aria-hidden="true"></span>Zdravka Čelara 16, Belgrade</p>
+                        </li>
+
+                        <li>
+                            <p><span class="fa fa-angle-right" aria-hidden="true"></span>info@baggage.com</p>
+                        </li>
+                        <li>
+                            <p><span class="fa fa-angle-right" aria-hidden="true"></span>+12 388 455 6789</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="w3ls-fsocial-grid">
+                <h3 class="sub-w3ls-headf">Follow Us</h3>
+                <div id="socialsPrint" class="social-ficons">
+                    <!-- <ul>
+                        <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fa fa-google"></span></a></li>
+                        <li><a href="sitemap.xml"><span class="fa fa-sitemap"></span></a></li>
+                        <li><a href="documentation.pdf"><span class="fa fa-file"></span></a></li>
+                    </ul> -->
+                </div>
+            </div>
+            <div class="move-top text-center mt-lg-4 mt-3">
+                <a href="#home"><span class="fa fa-angle-double-up" aria-hidden="true"></span></a>
+            </div>
+        </div>
+    </div>
+    <!-- //footer -->
+
+    <!-- copyright -->
+    <div class="cpy-right text-center py-3">
+        <p>All rights reserved &copy; 2023 ICT College</p>
+    </div>
+    <!-- //copyright -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+</body>
+</html>

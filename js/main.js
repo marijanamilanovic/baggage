@@ -291,7 +291,7 @@ if(url.indexOf("shop.html") != -1){
     }
 
     function productsPrint(product){
-        localStorage.setItem("products", JSON.stringify(data));
+        localStorage.setItem("products", JSON.stringify(product));
         product = sortProducts(product);
         product = filterByBrand(product);
         product = filterBySearch(product);

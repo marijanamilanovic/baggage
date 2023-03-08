@@ -426,4 +426,15 @@ if(url.indexOf("shop.html") != -1){
             localStorage.setItem("cart", JSON.stringify(ids));
         }
     }
+
+    function getLocalStorageItem(name){
+        let item = localStorage.getItem(name);
+        if(item){
+            parsedItem = JSON.parse(item);
+            if(parsedItem.length > 0){
+                return parsedItem;
+            }
+        }
+        return false;
+    }
 }

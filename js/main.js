@@ -184,6 +184,11 @@ function checkCheckedElements(elementValue, element, p){
 }
 
 if(url.indexOf("shop.html") != -1){
+    document.getElementById("cart").addEventListener("click", function(){
+        let c = getLocalStorageItem("cart");
+        createSidebar(c, "cart");
+    });
+
     function getDataFromLS(name){
         return JSON.parse(localStorage.getItem(name));
     }

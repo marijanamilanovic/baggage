@@ -1,11 +1,3 @@
-// addEventListener("load", function() {
-//     setTimeout(hideURLbar, 0);
-// }, false);
-
-// function hideURLbar() {
-//     window.scrollTo(0, 1);
-// }
-
 let url = location.href;
 
 function ajaxCallback(file, callback){
@@ -16,13 +8,31 @@ function ajaxCallback(file, callback){
         success: function(arr){
             callback(arr)
         },
-        error: function(xhr){
-            console.log(xhr);
+        error: function(jqXHR, exception){
+            var msg = "";
+            if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+            msg = 'Error 404. Requested page not found.';
+            } else if (jqXHR.status == 500) {
+            msg = 'Error 500. Internal Server Error.';
+            } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+            } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+            } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            document.getElementById("printError").innerHTML = msg;
         }
     })
 }
 
 if(url.indexOf("index.html") != -1){
+    //SERVICES 
+
     try{
         ajaxCallback("services.json", servicesPrint);
     }
@@ -44,6 +54,9 @@ if(url.indexOf("index.html") != -1){
     }
 }
 
+
+//NAVIGATION
+
 try{
     ajaxCallback("nav.json", navPrint);
 }
@@ -60,37 +73,7 @@ function navPrint(navArr){
     $("#navPrint").html(print);
 }
 
-// ajaxCallback("nav.json", footerPrint);
-// function footerPrint(footerArr){
-//     let print = `<div class="col-lg-3 footer_wthree_gridf mt-lg-5">
-//     <h2><a href="index.html"><span>B</span>aggage
-//         </a> </h2>
-//     <label class="sub-des2">Online Store</label>
-// </div>
-// <div class="col-lg-3 footer_wthree_gridf mt-md-0 mt-4">
-//     <ul class="footer_wthree_gridf_list">`;
-//     if(arr.name == "Home" || arr.name == "About" || arr.name == "Shop"){
-//         for(let arr of footerArr){
-//             print += `<li>
-//                         <a href="${arr.path}"><span class="fa fa-angle-right" aria-hidden="true"></span>${arr.name}</a>
-//                     </li>`;
-//         }
-//         print += `</ul>
-//     </div>
-//     <div class="col-lg-3 footer_wthree_gridf mt-md-0 mt-sm-4 mt-3">
-//         <ul class="footer_wthree_gridf_list">`;
-//     }
-//     else{
-//         for(let arr of footerArr){
-//             print += `<li>
-//                         <a href="${arr.path}"><span class="fa fa-angle-right" aria-hidden="true"></span>${arr.name}</a>
-//                     </li>`;
-//         }
-//         print += `</ul>
-//                 </div>`;
-//     }
-//     $("#footer").html(print);
-// }
+//SOCIALS
 
 ajaxCallback("socials.json", socialsPrint);
 function socialsPrint(socialsArr){
@@ -101,6 +84,8 @@ function socialsPrint(socialsArr){
     print += `</ul>`;
     $("#socialsPrint").html(print);
 }
+
+//CONTACT PAGE | FORM PROCESSING
 
 if(url.indexOf("contact.html") != -1){
     window.onload=function(){
@@ -184,17 +169,14 @@ function checkCheckedElements(elementValue, element, p){
 }
 
 if(url.indexOf("shop.html") != -1){
-    document.getElementById("cart").addEventListener("click", function(){
-        let c = getLocalStorageItem("cart");
-        createSidebar(c, "cart");
-    });
+    // function getDataFromLS(name){
+    //     return JSON.parse(localStorage.getItem(name));
+    // }
+    // function setDataToLS(name, data){
+    //     localStorage.setItem(name, JSON.stringify(data));
+    // }
 
-    function getDataFromLS(name){
-        return JSON.parse(localStorage.getItem(name));
-    }
-    function setDataToLS(name, data){
-        localStorage.setItem(name, JSON.stringify(data));
-    }
+    //DROPDOWN LIST FOR SORT
 
     ajaxCallback("options.json", printDDL);
     function printDDL(data){
@@ -206,23 +188,80 @@ if(url.indexOf("shop.html") != -1){
         $("#sort").change(onChange);
     }
 
+    //LOCAL STORAGE
+
+    function setSortValueLS(){
+        var sortValue = document.getElementById("sort").value;
+        localStorage.setItem("sortValue", sortValue);
+    }
+    $("#sort").change(setSortValueLS);
+
+    function checkSortValueLS(){
+        let sortValue = localStorage.getItem("sortValue");
+        if(sortValue != null){
+            $("#sort").val(sortValue);
+        }
+    }
+
+    //BRANDS FOR FILTER
+
     ajaxCallback("brands.json", printBrandsCHB);
     function printBrandsCHB(data){
         let print = `<h5 class="mt-2 mb-1">BRANDS</h5>`;
         for(let d of data){
-            print += `<input type="checkbox" name="chb${d.id}" id="chb${d.id}" class="brand"/>
+            print += `<input type="checkbox" name="chb" id="chb${d.id}" class="brand"/>
             <label for="${d.name}" id="${d.id}" name="${d.id}">${d.name}</label><br/>`;
         }
         $("#brandDiv").html(print);
-        //$("#brandDiv").change(onChange);
         brands = data;
-        $(".brand").change(onChange);
-        //ajaxCallback("products.json", productsPrint);
+        $("#brandDiv").change(onChange);
     }
+
+    $("#radioDiv").change(onChange);
 
     function onChange(){
         ajaxCallback("products.json", productsPrint);
     }
+
+    //SORT
+
+    function sortProducts(product){
+        let sortType = document.getElementById('sort').value;
+        switch(sortType){
+            case "price-asc" :
+                return product.sort((previous, next) => previous.price.current > next.price.current ? 1 : -1)
+            case "price-desc" :
+                return product.sort((previous, next) => previous.price.current < next.price.current ? 1 : -1)
+            case "name-desc" :
+                return product.sort((previous, next) => previous.name < next.name ? 1 : -1)
+            default:
+                return product.sort((previous, next) => previous.name > next.name ? 1 : -1)
+        }
+    }
+
+    //FILTER 
+
+    function filterProducts(product){
+        let chosenBrands = [];
+		let chosenStatuses = [];
+
+		$("input:checkbox[name=chb]:checked").each(function() { chosenBrands.push(parseInt($(this).attr('value'))); });
+		$("input:radio[name=prodRadio]:checked").each(function() { chosenStatuses.push($(this).attr('value')); });
+
+		let filteredProducts = product;
+
+		if (chosenBrands.length > 0) {
+			filteredProducts = filteredProducts.filter((x) => chosenBrands.includes(x.brand))
+		}
+
+		if (chosenStatuses.length > 0) {
+			filteredProducts = filteredProducts.filter((x) => chosenStatuses.includes(x.status))
+		}
+
+        return filteredProducts;
+    } 
+
+    //FILTER BY SEARCH
 
     document.getElementById("searchProd").addEventListener("keyup", onChange);
 
@@ -241,52 +280,8 @@ if(url.indexOf("shop.html") != -1){
         }
     }
 
-    function sortProducts(product){
-        let sortType = document.getElementById('sort').value;
-        switch(sortType){
-            case "price-asc" :
-                return product.sort((previous, next) => previous.price.current > next.price.current ? 1 : -1)
-            case "price-desc" :
-                return product.sort((previous, next) => previous.price.current < next.price.current ? 1 : -1)
-            case "name-desc" :
-                return product.sort((previous, next) => previous.name < next.name ? 1 : -1)
-            default:
-                return product.sort((previous, next) => previous.name > next.name ? 1 : -1)
-        }
-    }
 
-    // $("input:radio[name=prodRadio]").change(onChange);
-    // function filterBySale(product){
-    //     var filteredProducts = [];
-    //     let checked = $("input:radio[name=prodRadio]:checked").val();
-    //     if(checked == 1){
-    //         productsPrint(product);
-    //     }
-    //     else {
-    //         for(let p of product){
-    //             if(checked == p.price.before){
-    //                 filteredProducts.push(p);
-    //             }
-    //         }
-    //         productsPrint(filteredProducts);
-    //     }
-    // }
-
-    function filterByBrand(product){
-        let brandIds = [];
-        let chosenBrands = document.querySelectorAll('.brand:checked');
-        
-        chosenBrands.forEach(b => {
-            brandIds.push(Number(b.value))
-        })
-        if(brandIds.length) {
-            console.log(brandIds.length);
-            return product.filter(b => brandIds.includes(b.brand)
-        )
-        }
-        return product;
-    } 
-
+    //PRODUCTS PRINT
 
     try{
         ajaxCallback("products.json", productsPrint);
@@ -296,16 +291,14 @@ if(url.indexOf("shop.html") != -1){
     }
 
     function productsPrint(product){
-        localStorage.setItem("products", JSON.stringify(product));
         product = sortProducts(product);
-        product = filterByBrand(product);
+        product = filterProducts(product);
         product = filterBySearch(product);
-        //product = filterBySale(product);
         let print = "";
         if(product.length == 0){
             print += `<div class="row">
                         <div id="searchText" class="col-12">
-                            <p>Product with this name doesn't exist.</p>
+                            <p>There is no product with the selected criteria.</p>
                         </div>
                     </div>`;
         }
@@ -319,12 +312,13 @@ if(url.indexOf("shop.html") != -1){
                     <div class="item-info-product">
                         <h5>${p.name}</h5>
                         <div class="product_price">
+                            <h6 class="status">${statusProcess(p.status)}</h6>
                             <div class="grid-price">
                                 <h6>${priceProcess(p.price)}</h6>
                             </div>
                         </div>
                         <p>${brandProcess(p.brand)}</p>
-                        <input type="button" class="btn btn-dark add-to-cart" value="ADD TO CART" onclick="cart(${p.id})"/>
+                        <input type="button" class="btn btn-dark add-to-cart" value="ADD TO CART"/>
                         <p id="addedToTheCart" class="d-none">Added to the cart!</p>
                     </div>
                 </div>
@@ -333,12 +327,19 @@ if(url.indexOf("shop.html") != -1){
         }
 
         $("#productPrint").html(print);
-        // $("#btnAdd").click(addToCart);
-        // $("#btnAdd").click(function(){
-        //     document.getElementById("addedToTheCart").classList.remove("d-none");
-        // });
-    }
+    }    
 
+    function statusProcess(status){
+        let html = "";
+        if(status != null){
+            html += `<h6 class="status">${status}</h6>`;
+        }
+        else{
+            html += "";
+        }
+        return html;
+    }
+    
     function priceProcess(price){
         let html = "";
         if(price.before != null){
@@ -347,7 +348,7 @@ if(url.indexOf("shop.html") != -1){
         html += ` $${price.current} `;
         return html;
     }
-
+    
     let brands = [];
     ajaxCallback("brands.json", brandProcess);
     
@@ -357,11 +358,14 @@ if(url.indexOf("shop.html") != -1){
         } 
     }
 
+
+    //SHOPPING CART
+
     function createSidebar(array, type){
         let html = `<div class="sidebar">
                         <div class="row justify-content-center text-center p-3">
                             <p class="h2 col-10">Your ${type}</p>
-                            <div onclick="closeSidebar()" class="col-2"><i class="fas fa-times"></i></div>
+                            <div onclick="closeSidebar()" class="col-2"><i class="far fa-times"></i></div>
                         </div>
                         <div class="p-3 w-100 row justify-content-center" id="sidebar-content">`;
         let pl = getLocalStorageItem("products");
@@ -381,18 +385,6 @@ if(url.indexOf("shop.html") != -1){
                     }
                 }
             }
-            // if(type == "cart"){
-            //     html+= `<div  class="row justify-content-center">
-            //                 <input type="button" onclick="orderForm()" value="Order" class="button rounded p-2 m-md-3 m-2 col-5 col-md-3"/>
-            //                 <input type="button" onclick="del('cart')" value="Clear" class="button rounded p-2 m-md-3 m-2 col-5 col-md-3"/>
-            //                 <p><span class="h3">Total price: ${total()} $ </span>(With shipping per product)</p>
-            //             </div>`
-            // }
-            // else {
-            //     html+= `<div class="row justify-content-center">
-            //                 <input type="button" onclick="del('WishList')" value="Clear" class="button rounded p-2 m-md-3 m-2 w-50"/>
-            //             </div>`
-            // }
         }
         else {
             html += `<p class="mt-5">Your ${type} is empty!<br/>Visit our <a href="shop.html">shop</a> to add new items.</p>`;
@@ -400,11 +392,11 @@ if(url.indexOf("shop.html") != -1){
         html += "</div></div>"
         $('#main').append(html);
     }
-
+    
     function closeSidebar(){
         document.querySelector(".sidebar").remove();
     }
-
+    
     function cart(id){
         $('#addedToTheCart').fadeIn(500, function(){
             setTimeout(()=>{$('#addedToTheCart').fadeOut(500)},2000);
@@ -431,7 +423,7 @@ if(url.indexOf("shop.html") != -1){
             localStorage.setItem("cart", JSON.stringify(ids));
         }
     }
-
+    
     function getLocalStorageItem(name){
         let item = localStorage.getItem(name);
         if(item){
@@ -443,3 +435,6 @@ if(url.indexOf("shop.html") != -1){
         return false;
     }
 }
+
+
+

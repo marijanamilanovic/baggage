@@ -65,6 +65,11 @@
     font-size: 20px;
 }
 
+.status{
+    color:#d01e1e;
+    margin-bottom: 5px;
+}
+
 html,
 body {
     margin: 0;
@@ -1140,6 +1145,7 @@ ul.stars li a span:hover {
 .product-shoe-info {
     background: #f7f7f7;
     padding: 1em;
+    height: 480px;
 }
 
 .item-info-product {

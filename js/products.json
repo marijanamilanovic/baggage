@@ -10,7 +10,8 @@
             "src": "bag1.jpg",
             "alt": "Prada bag"
         },
-        "brand": 1
+        "brand": 1,
+        "status": null
     },
     {
         "id": 2,
@@ -23,7 +24,8 @@
             "src": "bag39.jpg",
             "alt": "Prada bag"
         },
-        "brand": 1
+        "brand": 1,
+        "status": "SALE"
     },
     {
         "id": 3,
@@ -36,7 +38,8 @@
             "src": "bag3.jpg",
             "alt": "YSL bag"
         },
-        "brand": 2
+        "brand": 2,
+        "status": "SALE"
     },
     {
         "id": 4,
@@ -49,7 +52,8 @@
             "src": "bag5.jpg",
             "alt": "Jacquemus bag"
         },
-        "brand": 3
+        "brand": 3,
+        "status": "SALE"
     },
     {
         "id": 5,
@@ -62,7 +66,8 @@
             "src": "bag9.jpg",
             "alt": "Valentino bag"
         },
-        "brand": 4
+        "brand": 4,
+        "status": null
     },
     {
         "id": 6,
@@ -75,7 +80,8 @@
             "src": "bag25.jpg",
             "alt": "Jacquemus bag"
         },
-        "brand": 3
+        "brand": 3,
+        "status": null
     },
     {
         "id": 7,
@@ -88,7 +94,8 @@
             "src": "bag16.jpg",
             "alt": "Chanel bag"
         },
-        "brand": 5
+        "brand": 5,
+        "status": "SALE"
     },
     {
         "id": 8,
@@ -101,7 +108,8 @@
             "src": "bag22.jpg",
             "alt": "YSL bag"
         },
-        "brand": 2
+        "brand": 2,
+        "status": null
     },
     {
         "id": 9,
@@ -114,7 +122,8 @@
             "src": "bag10.jpg",
             "alt": "Valentino bag"
         },
-        "brand": 4
+        "brand": 4,
+        "status": "SALE"
     },
     {
         "id": 10,
@@ -127,7 +136,8 @@
             "src": "bag82.jpg",
             "alt": "Chanel bag"
         },
-        "brand": 5
+        "brand": 5,
+        "status": "SALE"
     },
     {
         "id": 11,
@@ -140,7 +150,8 @@
             "src": "bag85.jpg",
             "alt": "Valentino bag"
         },
-        "brand": 4
+        "brand": 4,
+        "status": null
     },
     {
         "id": 12,
@@ -153,6 +164,7 @@
             "src": "bag29.jpg",
             "alt": "Chanel bag"
         },
-        "brand": 5
+        "brand": 5,
+        "status": null
     }
 ]

@@ -200,13 +200,15 @@ if(url.indexOf("shop.html") != -1){
 
         $(document).on("change", "#sort", onChange);
         $(document).on("change", "#ddlBrand", onChange);
+        $(document).on("change", "#radioDiv", onChange);
         $(document).on("keyup", "#searchProd", filterBySearch);
     }
 
     function onChange(){
         let product = getLS("products");
+        product = filterByBrand(product);
+        product = filterByStatus(product);
         product = sortProducts(product);
-        product = filterProducts(product);
 
         productsPrint(product);
     }
@@ -270,44 +272,34 @@ if(url.indexOf("shop.html") != -1){
         }
     }
 
-    //FILTER BY BRAND AND STATUS
+    //FILTER BY BRAND 
 
-    function filterProducts(niz){
+    function filterByBrand(product){
         let filteredProducts = [];
         let id = $("#ddlBrand").val();
-        let svojstvo = "brand";
-    
+        let prop = "brand";
         if(id == "0"){
-            filteredProducts = niz;
+            filteredProducts = product;
         }
         else{
-            filteredProducts = niz.filter(p => p[svojstvo] == id);
+            filteredProducts = product.filter(p => p[prop] == id);
         }
         return filteredProducts;
     }
 
-    // function filterProducts(product){
-    //     let chosenBrands = [];
-	// 	let chosenStatuses = [];
+    //FILTER BY STATUS
 
-	// 	$("input:checkbox[name=chb]:checked").each(function(x) { 
-    //         chosenBrands.push(this.value); 
-    //     });
-	// 	$("input:radio[name=prodRadio]:checked").each(function(){ 
-    //         chosenStatuses.push($(this).attr('value')); 
-    //     });
-	// 	let filteredProducts = product;
-
-	// 	if (chosenBrands.length > 0) {
-    //         filteredProducts = filteredProducts.filter((x) => chosenBrands.includes(x.brand))
-	// 	}
-
-	// 	if (chosenStatuses.length > 0) {
-	// 		filteredProducts = filteredProducts.filter((x) => chosenStatuses.includes(x.status))
-	// 	}
-
-    //     return filteredProducts;
-    // } 
+    function filterByStatus(product){
+        let chosenStatuses = [];
+        $("input:radio[name=prodRadio]:checked").each(function(p){
+            chosenStatuses.push(this.value); 
+        })
+        let filteredProducts = product;
+        if(chosenStatuses.length > 0){
+            filteredProducts = filteredProducts.filter((p) => chosenStatuses.includes(p.status))
+        }
+        return filteredProducts;
+    }
 
     //FILTER BY SEARCH
 
@@ -354,8 +346,8 @@ if(url.indexOf("shop.html") != -1){
                 </div>
             </div>`;
             });
-            $("#productPrint").html(print);
         }   
+        $("#productPrint").html(print);
     }    
 
     function statusProcess(status){

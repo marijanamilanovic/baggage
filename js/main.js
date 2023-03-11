@@ -182,29 +182,31 @@ if(url.indexOf("shop.html") != -1){
         return JSON.parse(localStorage.getItem(name));
     }
 
-    ajaxCallback("options.json", function(result){
-        printDDL(result, "sort", "SORT BY:", "sortDiv", "sort");
-        setLS("sortValue", result);
-    })
+    window.onload = function(){
+        ajaxCallback("options.json", function(result){
+            printDDL(result, "sort", "SORT BY:", "sortDiv", "sort");
+            setLS("sortValue", result);
+        })
 
-    ajaxCallback("brands.json", function(result){
-        printDDL(result, "ddlBrand", "FILTER BY BRAND:", "brandDiv", "filter");
-        setLS("brands", result);
-    })
+        ajaxCallback("brands.json", function(result){
+            printDDL(result, "ddlBrand", "FILTER BY BRAND:", "brandDiv", "filter");
+            setLS("brands", result);
+        })
 
-    ajaxCallback("products.json", function(result){
-        productsPrint(result);
-        setLS("products", result);
-    })
+        ajaxCallback("products.json", function(result){
+            productsPrint(result);
+            setLS("products", result);
+        })
 
-    $(document).on("change", "#sort", onChange);
-    $(document).on("change", "#ddlBrand", onChange);
+        $(document).on("change", "#sort", onChange);
+        $(document).on("change", "#ddlBrand", onChange);
+        $(document).on("keyup", "#searchProd", filterBySearch);
+    }
 
     function onChange(){
         let product = getLS("products");
         product = sortProducts(product);
         product = filterProducts(product);
-        product = filterBySearch(product);
 
         productsPrint(product);
     }
@@ -309,32 +311,19 @@ if(url.indexOf("shop.html") != -1){
 
     //FILTER BY SEARCH
 
-    document.getElementById("searchProd").addEventListener("keyup", onChange);
-
-    function filterBySearch(product){
-        let filteredProducts;
-        let searchedText = document.getElementById("searchProd").value;
-        searchedText = searchedText.toLowerCase();
-        if(searchedText.length > 0){
-            filteredProducts = product.filter((p) => {
-                return p.name.toLowerCase().includes(searchedText)
-            })
-            return filteredProducts;
-        }
-        else{
-            return product;
-        }
+    function filterBySearch(){
+        let products = getLS("products");
+        let filteredProducts = products.filter(p => {
+            if(p.name.toLowerCase().indexOf(document.getElementById("searchProd").value.toLowerCase().trim()) != -1)
+            {
+                return true;
+            }
+        })
+        productsPrint(filteredProducts);
     }
 
 
     //PRODUCTS PRINT
-
-    try{
-        ajaxCallback("products.json", productsPrint);
-    }
-    catch{
-        document.getElementById("productsPrint").innerHTML += `<p>Error loading products! Please try again later.</p>`;
-    }
 
     function productsPrint(product){
         let print = "";

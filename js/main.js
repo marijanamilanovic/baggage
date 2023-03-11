@@ -230,31 +230,6 @@ if(url.indexOf("shop.html") != -1){
         document.getElementById(`${divId}`).innerHTML = print;
     }
 
-    // ajaxCallback("options.json", printSortDDL);
-    // function printSortDDL(data){
-    //     let print = "";
-    //     for(let d of data){
-    //         print += `<option value="${d.value}">${d.name}</option>`;
-    //     }
-    //     $("#sort").html(print);
-    //     $("#sort").change(onChange);
-    // }
-
-    //BRANDS FOR FILTER
-
-    // function printBrandsCHB(data){
-    //     let print = `<h5 class="mt-2 mb-1">BRANDS</h5>`;
-    //     for(let d of data){
-    //         print += `<input type="checkbox" value="${d.id}" name="chb" id="chb${d.id}" class="brand"/>
-    //         <label for="${d.name}">${d.name}</label><br/>`;
-    //     }
-    //     $("#brandDiv").html(print);
-    //     brands = data;
-    //     $("#brandDiv").change(onChange);
-    // }
-
-    //$("#radioDiv").change(onChange);
-
     //SORT
 
     function sortProducts(product){
